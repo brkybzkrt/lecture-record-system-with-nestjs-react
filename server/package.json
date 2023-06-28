@@ -25,6 +25,7 @@
     "@nestjs/config": "^3.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
+    "@nestjs/swagger": "^7.0.11",
     "express-jwt": "^8.4.1",
     "jwks-rsa": "^3.0.1",
     "reflect-metadata": "^0.1.13",
