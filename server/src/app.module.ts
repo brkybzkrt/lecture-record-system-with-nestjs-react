@@ -5,11 +5,13 @@ import { AuthorizationModule } from './authorization/authorization.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { LoggerMiddleware } from './logger.middleware';
 import {MongooseModule} from '@nestjs/mongoose';
+import { FacultyMemberModule } from './faculty-member/faculty-member.module';
+import { StudentModule } from './student/student.module';
 
 @Module({
-  imports: [AuthorizationModule,ConfigModule.forRoot(),MongooseModule.forRootAsync({
+  imports: [AuthorizationModule,ConfigModule.forRoot(),
+    MongooseModule.forRootAsync({
     imports: [ConfigModule],
-    connectionName:"mongoose",
     useFactory: async (config: ConfigService) => ({
       uri: config.get('MONGODB_API_URL'),
       useNewUrlParser: true,
@@ -17,7 +19,7 @@ import {MongooseModule} from '@nestjs/mongoose';
      }),
      inject: [ConfigService],
     
-  })],
+  }), FacultyMemberModule, StudentModule],
   controllers: [AppController],
   providers: [AppService],
 })
