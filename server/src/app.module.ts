@@ -7,6 +7,9 @@ import { LoggerMiddleware } from './logger.middleware';
 import {MongooseModule} from '@nestjs/mongoose';
 import { FacultyMemberModule } from './faculty-member/faculty-member.module';
 import { StudentModule } from './student/student.module';
+import { ClassroomModule } from './classroom/classroom.module';
+import { LectureModule } from './lecture/lecture.module';
+import { LectureRecordModule } from './lecture-record/lecture-record.module';
 
 @Module({
   imports: [AuthorizationModule,ConfigModule.forRoot(),
@@ -19,7 +22,7 @@ import { StudentModule } from './student/student.module';
      }),
      inject: [ConfigService],
     
-  }), FacultyMemberModule, StudentModule],
+  }), FacultyMemberModule, StudentModule, ClassroomModule, LectureModule, LectureRecordModule],
   controllers: [AppController],
   providers: [AppService],
 })

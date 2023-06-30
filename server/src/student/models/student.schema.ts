@@ -4,9 +4,8 @@ const { randomUUID } = require('crypto');
 
 export type StudentDocument = HydratedDocument<Student>;
 
-@Schema()
+@Schema({ timestamps: true })
 export class Student {
-
   @Prop()
   firstName: string;
 
@@ -16,17 +15,14 @@ export class Student {
   @Prop()
   displayName: number;
 
-  @Prop()
+  @Prop({ unique: true, required: true })
   email: string;
 
-  @Prop({type: 'string',default:randomUUID()})
-  code:string;
+  @Prop({ type: 'string', default: randomUUID() })
+  code: string;
 
-  @Prop()
-  createdAt:string;
-
-  @Prop()
-  isDeleted:boolean;
+  @Prop({ type: 'Boolean', default: false })
+  isDeleted: boolean;
 }
 
 export const StudentSchema = SchemaFactory.createForClass(Student);
