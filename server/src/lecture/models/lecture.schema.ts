@@ -2,21 +2,15 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 const { randomUUID } = require('crypto');
 
-export type FacultyMemberDocument = HydratedDocument<FacultyMember>;
+export type LectureDocument = HydratedDocument<Lecture>;
 
 @Schema({ timestamps: true })
-export class FacultyMember {
+export class Lecture {
   @Prop()
-  firstName: string;
+  name: string;
 
-  @Prop()
-  lastName: number;
-
-  @Prop()
-  displayName: number;
-
-  @Prop({ isRequired: true, unique: true })
-  email: string;
+  @Prop({ type: 'String', required: true, match: /[01]{1}/g, default: '0' })
+  isMandatory: string;
 
   @Prop({ type: 'String', default: randomUUID() })
   code: string;
@@ -25,4 +19,4 @@ export class FacultyMember {
   isDeleted: boolean;
 }
 
-export const FacultyMemberSchema = SchemaFactory.createForClass(FacultyMember);
+export const LectureSchema = SchemaFactory.createForClass(Lecture);
