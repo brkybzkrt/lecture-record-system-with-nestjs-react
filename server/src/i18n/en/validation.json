@@ -1,0 +1,6 @@
+{
+    "NOT_EMPTY": "{property} cannot be empty",
+    "INVALID_EMAIL": "email is invalid",
+    "INVALID_STRING":"{property} must be a string",
+    "INVALID_BOOLEAN": "{property} is not a boolean"
+  }

@@ -5,6 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { HttpException, Injectable } from '@nestjs/common';
 import { CreateLectureDto } from '../dto/lecture.dtos';
 
+
 @Injectable()
 export class LectureRepository implements LectureInterface {
   constructor(
@@ -40,6 +41,10 @@ export class LectureRepository implements LectureInterface {
   }
   async create(data: CreateLectureDto) {
     try {
+      const isLectureExists = await this.lectureModel.findOne({name: data.name});
+      if(isLectureExists){
+        throw new HttpException("lecture_already_exists",400);
+      }
       const lecture = await this.lectureModel.create(data);
       return lecture;
     } catch (error) {

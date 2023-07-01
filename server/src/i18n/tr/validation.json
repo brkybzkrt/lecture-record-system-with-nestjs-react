@@ -1,0 +1,6 @@
+{
+    "NOT_EMPTY": "{property} boş olamaz",
+    "INVALID_EMAIL": "email doğru formatta değil",
+    "INVALID_STRING":"{property} string bir değer olmalı",
+    "INVALID_BOOLEAN": "{property} boolean bir değer olmalı"
+  }
