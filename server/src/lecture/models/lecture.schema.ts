@@ -9,8 +9,8 @@ export class Lecture {
   @Prop()
   name: string;
 
-  @Prop({ type: 'String', required: true, match: /[01]{1}/g, default: '0' })
-  isMandatory: string;
+  @Prop({ type: 'Boolean', required: true, default: false })
+  isMandatory: boolean;
 
   @Prop({ type: 'String', default: randomUUID() })
   code: string;

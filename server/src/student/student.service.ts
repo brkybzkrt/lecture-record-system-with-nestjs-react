@@ -10,7 +10,6 @@ import { StudentInterface } from './student.interface';
 
 @Injectable()
 export class StudentService {
-  //constructor(@InjectModel(Student.name) private studentModel: mongoose.Model<Student>) {}
 constructor( @Inject('STUDENT_REPOSITORY')
 private readonly studentRepository: StudentInterface<any>){}
 
