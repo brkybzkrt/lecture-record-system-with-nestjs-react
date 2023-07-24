@@ -1,6 +1,8 @@
+import { CommonInterface } from "src/common/common.interface";
+import { Student } from "./models/student.schema";
 
-export interface StudentInterface<T>{
-  findAll(): any;
+export interface StudentInterface extends CommonInterface<Student> {
+
  
 
 }
