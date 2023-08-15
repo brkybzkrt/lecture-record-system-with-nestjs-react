@@ -17,7 +17,7 @@ import { UpdateStudentDto } from '../dto/update.student.dto';
 import { DeleteStudentDto } from '../dto/delete.student.dto';
   
   @Controller('student')
-  @ApiBearerAuth('JWT-auth')
+  // @ApiBearerAuth('JWT-auth')
   @ApiTags('student')
   export class StudentController {
     constructor(private readonly studentService: StudentService) {}

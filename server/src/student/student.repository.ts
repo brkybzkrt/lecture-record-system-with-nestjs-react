@@ -16,8 +16,8 @@ export class StudentRepository implements StudentInterface {
 
     findAll() {
         try {
-          const lectures = this.studentModel.find({ isDeleted: false });
-          return lectures;
+          const students = this.studentModel.find({ isDeleted: false });
+          return students;
         } catch (error) {
           throw new HttpException(error, 500);
         }
