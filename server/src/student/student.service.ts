@@ -13,7 +13,7 @@ export class StudentService {
 constructor( @Inject('STUDENT_REPOSITORY')
 private readonly studentRepository: StudentInterface){}
 
-  async findAll(): Promise<Student[]> {
+  async findAll() {
     return this.studentRepository.findAll();
   }
 

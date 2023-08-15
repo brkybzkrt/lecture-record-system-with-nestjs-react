@@ -1,0 +1,16 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Student {
+  firstName: String!
+  lastName: String!
+  displayName: String!
+  email: String!
+  code: String!
+  isDeleted: Boolean!
+}
+
+type Query {
+  students: [Student!]!
+}

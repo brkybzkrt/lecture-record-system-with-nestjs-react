@@ -11,12 +11,26 @@ import { ClassroomModule } from './classroom/classroom.module';
 import { LectureModule } from './lecture/lecture.module';
 import { LectureRecordModule } from './lecture-record/lecture-record.module';
 import * as path from 'path';
-import { AcceptLanguageResolver, HeaderResolver, I18nModule, QueryResolver } from 'nestjs-i18n';
+// import { AcceptLanguageResolver, HeaderResolver, I18nModule, QueryResolver } from 'nestjs-i18n';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { GraphQLModule } from '@nestjs/graphql';
+import { join } from 'path';
 
 @Module({
   imports: [
     AuthorizationModule,
     ConfigModule.forRoot(),
+
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      playground:true,
+      autoSchemaFile: 'schema.gql',
+      
+      definitions:{
+        path:join(process.cwd(),'src/graphql.ts')
+      }
+      
+    }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (config: ConfigService) => ({
@@ -26,22 +40,23 @@ import { AcceptLanguageResolver, HeaderResolver, I18nModule, QueryResolver } fro
       }),
       inject: [ConfigService],
     }),
-    FacultyMemberModule,
-    StudentModule,
-    ClassroomModule,
-    LectureModule,
-    LectureRecordModule,
-    I18nModule.forRoot({
-      fallbackLanguage: 'en',
-      loaderOptions: {
-        path: path.join(__dirname, '/i18n/'),
-        watch: true,
-      },
-      resolvers: [
-        { use: HeaderResolver, options: ['en,tr'] },
-        AcceptLanguageResolver,
-      ],
-    }),
+    // FacultyMemberModule,
+     StudentModule,
+    // ClassroomModule,
+    // LectureModule,
+    // LectureRecordModule,
+    // I18nModule.forRoot({
+    //   fallbackLanguage: 'en',
+    //   loaderOptions: {
+    //     path: path.join(__dirname, '/i18n/'),
+    //     watch: true,
+    //   },
+    //   resolvers: [
+    //     { use: HeaderResolver, options: ['en,tr'] },
+    //     AcceptLanguageResolver,
+    //   ],
+    // }),
+   
   ],
   controllers: [AppController],
   providers: [AppService],
